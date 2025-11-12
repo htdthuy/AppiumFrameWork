@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.1.dtd" >
+<suite name="Parallel Suite" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="com.axonvibe.Base.TestListener"/>
+    </listeners>
+
+    <test name="Android_Staging">
+        <parameter name="platform" value="android"/>
+        <!--        <parameter name="env" value="stg"/>-->
+        <classes>
+            <class name="com.axonvibe.tests.TestOpenApp"/>
+        </classes>
+    </test>
+</suite>
