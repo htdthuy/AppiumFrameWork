@@ -50,13 +50,14 @@ public class BaseTest {
 
         switch (platform.toLowerCase()) {
             case "android" -> {
-                caps.setCapability("platformName", "Android");
+                caps.setCapability("platformName", config.getProperty("android.platformName"));
                 caps.setCapability("deviceName", config.getProperty("android.deviceName"));
+                caps.setCapability("platformVersion", config.getProperty("android.platformVersion"));
                 caps.setCapability("automationName", config.getProperty("android.automationName"));
                 caps.setCapability("appPackage", config.getProperty("android.appPackage"));
                 caps.setCapability("appActivity", config.getProperty("android.appActivity"));
-                //caps.setCapability("noReset", Boolean.parseBoolean(config.getProperty("appium:noReset", "true")));
-                //caps.setCapability("newCommandTimeout", Integer.parseInt(config.getProperty("appium:newCommandTimeout", "300")));
+                caps.setCapability("noReset", Boolean.parseBoolean(config.getProperty("appium:noReset", "true")));
+                caps.setCapability("newCommandTimeout", Integer.parseInt(config.getProperty("appium:newCommandTimeout", "300")));
                 driver = new AndroidDriver(new URL(config.getProperty("android.serverUrl")), caps);
             }
 
@@ -66,8 +67,8 @@ public class BaseTest {
                 caps.setCapability("platformVersion", config.getProperty("ios.platformVersion"));
                 caps.setCapability("automationName", config.getProperty("ios.automationName"));
                 caps.setCapability("bundleId", config.getProperty("bundleId"));
-                //caps.setCapability("noReset", Boolean.parseBoolean(config.getProperty("appium:noReset", "true")));
-                //caps.setCapability("newCommandTimeout", Integer.parseInt(config.getProperty("appium:newCommandTimeout", "300")));
+                caps.setCapability("noReset", Boolean.parseBoolean(config.getProperty("appium:noReset", "true")));
+                caps.setCapability("newCommandTimeout", Integer.parseInt(config.getProperty("appium:newCommandTimeout", "300")));
                 driver = new IOSDriver(new URL(config.getProperty("ios.serverUrl")), caps);
             }
 
